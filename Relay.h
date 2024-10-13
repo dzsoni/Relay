@@ -1,8 +1,9 @@
-#ifndef RELAY_H
-#define RELAY_H
+#ifndef  RELAY_H
+#define  RELAY_H
 
 #include <Arduino.h>
 #include "SimpleJsonParser.h"
+#include "Medclient.h"
 
 
 class Relay
@@ -28,8 +29,8 @@ class Relay
     void setRelayState(bool state);
     bool getRelayState();
     bool getOnStateLevel();
-    bool getInitstate();
+    bool getInitState();
     unsigned char getRelayPin();
 };
 
-#endif /* RELAY_H */
+#endif

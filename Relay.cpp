@@ -8,12 +8,12 @@ Relay::Relay(unsigned char  pin, bool initstate, bool on_state_level)
 
 Relay::Relay(String pathToJson , String ID_of_relay , bool initstate, bool on_state_level)
 {
-    if(_sjsonp.getJSONValueByKeyFromFile(pathToJson, ID_of_relay)=="")
+    if(_sjsonp.getValueByKeyFromFile(pathToJson, ID_of_relay)=="")
     {
         Serial.println(F("Relay init not succesful. No such relay ID."));
         return;
     }
-    init( _sjsonp.getJSONValueByKeyFromFile(pathToJson, ID_of_relay).toInt(), initstate,  on_state_level);
+    init( _sjsonp.getValueByKeyFromFile(pathToJson, ID_of_relay).toInt(), initstate,  on_state_level);
 }
 
 Relay::~Relay()
@@ -66,7 +66,7 @@ bool Relay::getOnStateLevel()
 {
     return _onstatelevel;
 }
-bool Relay::getInitstate()
+bool Relay::getInitState()
 {
     return _initstate;
 }
