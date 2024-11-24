@@ -50,9 +50,10 @@ bool Relay::getRelayState()
 void Relay::init(unsigned char  pin, bool initstate, bool on_state_level)
 {
     _pin            = pin;
-    _state          = initstate;
-    _initstate      = initstate;
     _onstatelevel   = on_state_level;
+    _initstate      = (initstate==on_state_level)?on_state_level:!on_state_level;
+    _state          = _initstate;
+    
     pinMode(_pin, OUTPUT);
     _controlRelay();
 }

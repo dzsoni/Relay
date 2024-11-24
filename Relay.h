@@ -1,5 +1,5 @@
-#ifndef  RELAY_H
-#define  RELAY_H
+#ifndef RELAY_H
+#define RELAY_H
 
 #include <Arduino.h>
 #include "SimpleJsonParser.h"
@@ -33,4 +33,4 @@ class Relay
     unsigned char getRelayPin();
 };
 
-#endif
+#endif /* RELAY_H */
