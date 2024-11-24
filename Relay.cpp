@@ -22,37 +22,35 @@ Relay::~Relay()
 
 void Relay::On()
 {
-    _state=_onstatelevel;
+    _state=true;
     _controlRelay();
 }
 
 void Relay::Off()
 {
-    _state=!_onstatelevel;
+    _state=false;
     _controlRelay();
 }
 //Set the state on the pin
 void Relay::_controlRelay()
 {
-   digitalWrite(_pin,_state);
+   digitalWrite(_pin,(_state) ? _onstatelevel : !_onstatelevel);
 }
-void Relay::setRelayState(bool state)
+void Relay::setRelayState(bool newstate)
 {
-    if(state){_state=_onstatelevel;}
-    else{_state=!_onstatelevel;}
+    _state= newstate;
     _controlRelay();
 }
 bool Relay::getRelayState()
 {
-    if(_onstatelevel==_state) return 1;
-    return 0;
+    return _state;
 }
 void Relay::init(unsigned char  pin, bool initstate, bool on_state_level)
 {
     _pin            = pin;
     _onstatelevel   = on_state_level;
-    _initstate      = (initstate==on_state_level)?on_state_level:!on_state_level;
-    _state          = _initstate;
+    _initstate      = initstate;
+    _state          = initstate;
     
     pinMode(_pin, OUTPUT);
     _controlRelay();
