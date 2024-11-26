@@ -10,10 +10,10 @@ class Relay
 {
     private:
 
-    bool            _state;
+    bool            _state; //logical state of the relay
     bool            _initstate;
     unsigned char   _pin;
-    bool            _onstatelevel;
+    bool            _onstatelevel;// physical voltage level when relay is ON
     void            _controlRelay();//set the state on pin
     SimpleJsonParser  _sjsonp;
 
