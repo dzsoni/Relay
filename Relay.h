@@ -3,7 +3,6 @@
 
 
 #include <Arduino.h>
-#include "Medclient.h"
 #include <WString.h>
 
 #ifdef DEBUG_RELAY
