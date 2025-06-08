@@ -1,19 +1,14 @@
 #include "Relay.h"
 
 
-Relay::Relay(unsigned char  pin, bool initstate, bool on_state_level)
+Relay::Relay(String relayid, unsigned char pin, bool initstate, bool on_state_level)
 {
-    init( pin,  initstate,  on_state_level);
-}
-
-Relay::Relay(String pathToJson , String ID_of_relay , bool initstate, bool on_state_level)
-{
-    if(_sjsonp.getValueByKeyFromFile(pathToJson, ID_of_relay)=="")
+    _relayid = relayid;
+    if(relayid=="")
     {
-        Serial.println(F("Relay init not succesful. No such relay ID."));
-        return;
+        _relayid = String("RELAY")+String(pin);
     }
-    init( _sjsonp.getValueByKeyFromFile(pathToJson, ID_of_relay).toInt(), initstate,  on_state_level);
+    init(pin, initstate, on_state_level);
 }
 
 Relay::~Relay()
@@ -45,6 +40,7 @@ bool Relay::getRelayState()
 {
     return _state;
 }
+
 void Relay::init(unsigned char  pin, bool initstate, bool on_state_level)
 {
     _pin            = pin;
