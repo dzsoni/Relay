@@ -3,8 +3,8 @@
 
 #include <Arduino.h>
 #include <vector>
-#include "SimpleJsonParser.h"
-#include "SimpleJsonWriter.h"
+#include "SimpleJsonParser.h" //https://github.com/dzsoni/SimpleJsonParser
+#include "SimpleJsonWriter.h" //https://github.com/dzsoni/SimpleJsonWriter
 #include "FS.h"
 #include "Relay.h"
 
